@@ -23,8 +23,8 @@ yum -y install openvpn &&
 /bin/cp -rf ./data/* /etc/openvpn/
 sed -i "25a local $SERVER_IP" /etc/openvpn/server.conf
 systemctl start firewalld
-firewall-cmd --add-port 1194/udp --permanent
-firewall-cmd --add-port 1194/tcp --permanent
+firewall-cmd --add-port 53/udp --permanent
+firewall-cmd --add-port 53/tcp --permanent
 firewall-cmd --permanent --add-masquerade
 firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=10.8.0.0/24 masquerade'
 firewall-cmd --reload

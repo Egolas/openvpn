@@ -23,6 +23,7 @@ yum -y install openvpn &&
 /bin/cp -rf ./data/* /etc/openvpn/
 sed -i "25a local $SERVER_IP" /etc/openvpn/server.conf
 systemctl start firewalld
+systemctl enable firewalld
 firewall-cmd --add-port 53/udp --permanent
 firewall-cmd --add-port 53/tcp --permanent
 firewall-cmd --permanent --add-masquerade
